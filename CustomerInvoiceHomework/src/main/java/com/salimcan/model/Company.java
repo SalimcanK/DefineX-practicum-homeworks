@@ -1,40 +1,42 @@
 package com.salimcan.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
-@Document(collection = "Company")
+import org.springframework.data.annotation.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@Entity
+@Table(name = "company")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Company {
 
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "company_id", nullable = false)
 	private long companyId;
+	
+	@Column(name = "industry")
+	@Enumerated(EnumType.STRING)
 	private Industry industry;
+	
+	@Column(name = "company_name")
 	private String name;
-	
-	
-	public long getCompanyId() {
-		return companyId;
-	}
-	public void setCompanyId(long companyId) {
-		this.companyId = companyId;
-	}
-	public Industry getIndustry() {
-		return industry;
-	}
-	public void setIndustry(Industry industry) {
-		this.industry = industry;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	@Override
-	public String toString() {
-		return "Company [companyId=" + companyId + ", industry=" + industry + ", name=" + name + "]";
-	}
-	
 	
 }

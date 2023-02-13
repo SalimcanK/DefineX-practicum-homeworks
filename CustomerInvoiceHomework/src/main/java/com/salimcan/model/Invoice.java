@@ -2,64 +2,54 @@ package com.salimcan.model;
 
 import java.time.LocalDateTime;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Document(collection = "Invoice")
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@Entity
+@Table(name = "invoice")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Invoice {
 
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "invoice_id", nullable = false)
 	private long invoiceId;
-	private long customerId;
-	private String customerName;
-	private int amount;
-	private String companyName;
-	private LocalDateTime dateTime;
 	
+	@Column(name = "cost")
+    private Long cost;
 	
-	public long getInvoiceId() {
-		return invoiceId;
-	}
-	public void setInvoiceId(long invoiceId) {
-		this.invoiceId = invoiceId;
-	}
-	public long getCustomerId() {
-		return customerId;
-	}
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
-	}
-	public String getCustomerName() {
-		return customerName;
-	}
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-	public int getAmount() {
-		return amount;
-	}
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-	public String getCompanyName() {
-		return companyName;
-	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-	public LocalDateTime getDateTime() {
-		return dateTime;
-	}
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
-	}
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "customer_id")
+	private Customer customer;
 	
-	@Override
-	public String toString() {
-		return "Invoice [invoiceId=" + invoiceId + ", customerId=" + customerId + ", customerName=" + customerName
-				+ ", amount=" + amount + ", companyName=" + companyName + ", dateTime=" + dateTime + "]";
-	}
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "company_id")
+    private Company company;
 	
+	@CreatedDate
+	@Column(name = "created_date")
+	private LocalDateTime createdDate;
 	
 }

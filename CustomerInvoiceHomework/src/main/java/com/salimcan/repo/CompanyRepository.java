@@ -1,10 +1,10 @@
 package com.salimcan.repo;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.salimcan.model.Company;
 
 
-public interface CompanyRepository extends MongoRepository<Company, Long> {
+public interface CompanyRepository extends JpaRepository<Company, Long> {
 
 }

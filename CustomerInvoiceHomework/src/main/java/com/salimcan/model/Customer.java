@@ -2,44 +2,42 @@ package com.salimcan.model;
 
 import java.time.LocalDateTime;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
-@Document(collection = "Customer")
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@Entity
+@Table(name = "customer")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Customer {
 	
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "customer_id", nullable = false)
 	private long customerId;
+	
+	@Column(name = "full_name")
 	private String fullName;
-	private LocalDateTime dateTime;
 	
-	
-	public long getCustomerId() {
-		return customerId;
-	}
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
-	}
-	public String getFullName() {
-		return fullName;
-	}
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-	public LocalDateTime getDateTime() {
-		return dateTime;
-	}
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
-	}
-	
-	@Override
-	public String toString() {
-		return "Customer [customerId=" + customerId + ", fullName=" + fullName + ", dateTime=" + dateTime + "]";
-	}
-	
-	
-	
+	@CreatedDate
+	@Column(name = "created_date")
+	private LocalDateTime createdDate;
 	
 }
