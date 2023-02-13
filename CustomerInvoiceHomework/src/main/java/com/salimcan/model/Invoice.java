@@ -2,12 +2,14 @@ package com.salimcan.model;
 
 import java.time.LocalDateTime;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Invoice")
 public class Invoice {
 
 	
+	@Id
 	private long invoiceId;
 	private long customerId;
 	private String customerName;

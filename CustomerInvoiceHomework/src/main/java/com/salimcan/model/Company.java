@@ -1,11 +1,12 @@
 package com.salimcan.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Company")
 public class Company {
 
-	
+	@Id
 	private long companyId;
 	private Industry industry;
 	private String name;
