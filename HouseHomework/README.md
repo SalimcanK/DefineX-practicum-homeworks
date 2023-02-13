@@ -1,3 +1,5 @@
+I needed to create the repository again at 13.02.2023 because of Eclipse git problems.
+
 -------------------------------------------------------------------------------------------------------------
 
 Total price of all apartments: 3.090.000 TL
