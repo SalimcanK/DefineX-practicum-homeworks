@@ -1,6 +1,7 @@
 package com.salimcan.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,5 +41,8 @@ public class Customer {
 	@CreatedDate
 	@Column(name = "created_date")
 	private LocalDateTime createdDate;
+	
+	@OneToMany
+	private List<Invoice> invoices;
 	
 }
