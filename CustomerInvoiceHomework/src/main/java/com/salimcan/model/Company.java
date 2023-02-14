@@ -30,13 +30,13 @@ public class Company {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "company_id", nullable = false)
-	private long companyId;
+	public long companyId;
 	
 	@Column(name = "industry")
 	@Enumerated(EnumType.STRING)
-	private Industry industry;
+	public Industry industry;
 	
 	@Column(name = "company_name")
-	private String name;
+	public String name;
 	
 }

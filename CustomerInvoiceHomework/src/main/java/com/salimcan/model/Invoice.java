@@ -35,21 +35,21 @@ public class Invoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "invoice_id", nullable = false)
-	private long invoiceId;
+	public long invoiceId;
 	
 	@Column(name = "cost")
-    private Long cost;
+	public Long cost;
 	
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "customer_id")
-	private Customer customer;
+	public Customer customer;
 	
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "company_id")
-    private Company company;
+	public Company company;
 	
 	@CreatedDate
 	@Column(name = "created_date")
-	private LocalDateTime createdDate;
+	public LocalDateTime createdDate;
 	
 }
