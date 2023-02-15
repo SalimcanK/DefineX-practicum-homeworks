@@ -10,33 +10,50 @@ import javax.persistence.Table;
 
 import javax.persistence.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 
 @Entity
 @Table(name = "company")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Company {
 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "company_id", nullable = false)
-	public long companyId;
+	private long companyId;
 	
 	@Column(name = "industry")
 	@Enumerated(EnumType.STRING)
-	public Industry industry;
+	private Industry industry;
 	
 	@Column(name = "company_name")
-	public String name;
+	private String name;
+
+	
+	public long getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(long companyId) {
+		this.companyId = companyId;
+	}
+
+	public Industry getIndustry() {
+		return industry;
+	}
+
+	public void setIndustry(Industry industry) {
+		this.industry = industry;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	
 	
 }

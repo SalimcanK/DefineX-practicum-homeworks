@@ -9,35 +9,53 @@ import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
-import javax.persistence.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import javax.persistence.Id;
 
 
 @Entity
 @Table(name = "customer")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Customer {
 	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "customer_id", nullable = false)
-	public long customerId;
+	private long customerId;
 	
 	@Column(name = "full_name")
-	public String fullName;
+	private String fullName;
 	
 	@CreatedDate
 	@Column(name = "created_date")
-	public LocalDateTime createdDate;
+	private LocalDateTime createdDate;
+
+	
+	public long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(long customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	
+	
 	
 }

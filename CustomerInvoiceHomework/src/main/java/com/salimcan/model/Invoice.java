@@ -15,41 +15,74 @@ import javax.persistence.Table;
 import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 
 @Entity
 @Table(name = "invoice")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class Invoice {
 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "invoice_id", nullable = false)
-	public long invoiceId;
+	private long invoiceId;
 	
 	@Column(name = "cost")
-	public Long cost;
+	private Long cost;
 	
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "customer_id")
-	public Customer customer;
+	private Customer customer;
 	
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "company_id")
-	public Company company;
+	private Company company;
 	
 	@CreatedDate
 	@Column(name = "created_date")
-	public LocalDateTime createdDate;
+	private LocalDateTime createdDate;
+
+	
+	public long getInvoiceId() {
+		return invoiceId;
+	}
+
+	public void setInvoiceId(long invoiceId) {
+		this.invoiceId = invoiceId;
+	}
+
+	public Long getCost() {
+		return cost;
+	}
+
+	public void setCost(Long cost) {
+		this.cost = cost;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
+	}
+	
+	
+	
 	
 }

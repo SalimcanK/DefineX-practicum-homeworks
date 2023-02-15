@@ -23,4 +23,25 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepo.findAll();
 	}
 
+
+	@Override
+	public Customer addCustomer(Customer customer) {
+		
+		return customerRepo.save(customer);
+	}
+
+
+	@Override
+	public List<Customer> findCustomersContaining(String string) {
+		
+		return customerRepo.findCustomersContaining(string);
+	}
+
+
+	@Override
+	public List<Customer> findCustomersByMonth(Integer month) {
+		
+		return customerRepo.findCustomersByMonth(month);
+	}
+
 }
